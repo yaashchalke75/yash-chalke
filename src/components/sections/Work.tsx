@@ -1,0 +1,331 @@
+import { useRef, type CSSProperties } from "react";
+import { useGSAP } from "../../lib/useGSAP";
+import { gsap } from "../../lib/smoothScroll";
+import {
+  useCoarsePointer,
+  useMediaQuery,
+  usePrefersReducedMotion,
+} from "../../lib/hooks";
+
+type IconKind = "lens" | "voice" | "study" | "collab";
+
+type Project = {
+  index: string;
+  title: string;
+  category: string;
+  stack: string;
+  blurb: string;
+  year: string;
+  tint: string;
+  surface: string;
+  icon: IconKind;
+};
+
+const PROJECTS: Project[] = [
+  {
+    index: "01",
+    title: "DEVLENS",
+    category: "AI GitHub Repo Analyser",
+    stack: "React · TypeScript · Claude API",
+    blurb:
+      "Analyses public repositories and auto-generates codebase summaries, stack breakdowns, code-quality reports and README drafts.",
+    year: "2026",
+    tint: "#ece8df",
+    surface:
+      "radial-gradient(120% 90% at 20% 15%, #232220 0%, #0e0d0c 55%), linear-gradient(135deg, #171614, #0a0908)",
+    icon: "lens",
+  },
+  {
+    index: "02",
+    title: "RAG CV",
+    category: "Voice RAG Assistant",
+    stack: "Python · FastAPI · LangGraph · Pinecone",
+    blurb:
+      "Production RAG pipeline that ingests resume data into Pinecone and answers recruiter questions out loud — voice queries in, traced and cited responses back.",
+    year: "2026",
+    tint: "#c7c2b8",
+    surface:
+      "radial-gradient(110% 80% at 80% 10%, #1e1d1a 0%, #0c0b0a 60%), linear-gradient(135deg, #15140f, #0a0908)",
+    icon: "voice",
+  },
+  {
+    index: "03",
+    title: "STUDY AI",
+    category: "AI Study Companion",
+    stack: "Next.js · OpenAI · Gemini Vision",
+    blurb:
+      "Context-aware assistant that lets users upload documents and query them in natural language, with multimodal PDF analysis.",
+    year: "2026",
+    tint: "#a7a299",
+    surface:
+      "radial-gradient(120% 90% at 70% 30%, #201f1c 0%, #0d0c0b 60%), linear-gradient(135deg, #161512, #0a0908)",
+    icon: "study",
+  },
+  {
+    index: "04",
+    title: "LIVE BOARD",
+    category: "Real-Time Collaboration",
+    stack: "React · WebSockets · Supabase",
+    blurb:
+      "Collaborative workspace with live cursors, threaded comments and Markdown autosave — Google Docs-style interactions.",
+    year: "2026",
+    tint: "#837e75",
+    surface:
+      "radial-gradient(120% 90% at 30% 80%, #1b1a17 0%, #0c0b0a 60%), linear-gradient(135deg, #141310, #0a0908)",
+    icon: "collab",
+  },
+];
+
+export default function Work() {
+  const section = useRef<HTMLElement>(null);
+  const track = useRef<HTMLDivElement>(null);
+  const coarse = useCoarsePointer();
+  const narrow = useMediaQuery("(max-width: 767px)");
+  const reduced = usePrefersReducedMotion();
+  // single source of truth: stack vertically (no pin) on small screens, touch
+  // devices, or when reduced motion is requested — pin/scrub otherwise.
+  const stacked = coarse || narrow || reduced;
+
+  useGSAP(() => {
+    if (stacked) return;
+    const trackEl = track.current!;
+    const getScroll = () => trackEl.scrollWidth - window.innerWidth;
+
+    const tween = gsap.to(trackEl, {
+      x: () => -getScroll(),
+      ease: "none",
+      scrollTrigger: {
+        trigger: section.current,
+        start: "top top",
+        end: () => `+=${getScroll()}`,
+        pin: true,
+        scrub: 1, // inertia / smoothing on the horizontal track
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
+      },
+    });
+
+    // progress bar
+    const bar = section.current!.querySelector(
+      "[data-work-bar]",
+    ) as HTMLElement;
+    gsap.to(bar, {
+      scaleX: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section.current,
+        start: "top top",
+        end: () => `+=${getScroll()}`,
+        scrub: true,
+      },
+    });
+
+    return () => {
+      tween.kill();
+    };
+  }, [stacked]);
+
+  return (
+    <section
+      id="work"
+      ref={section}
+      className="relative overflow-hidden bg-[var(--color-ink)]"
+    >
+      {/* header — in flow on mobile, overlays the pinned track on desktop */}
+      <div className="pointer-events-none z-20 flex items-start justify-between px-[var(--gutter)] pt-28 pb-2 md:absolute md:inset-x-0 md:top-0 md:pb-0 md:pt-28">
+        <p className="label">
+          <span className="text-[var(--color-acid)]">[02]</span>
+          <br />
+          Selected work
+        </p>
+        {!stacked && (
+          <p className="label hidden text-right md:block">
+            Drag · Scroll
+            <br />
+            {PROJECTS.length} projects
+          </p>
+        )}
+      </div>
+
+      {/* track — horizontal (pinned) on desktop, vertical stack otherwise */}
+      <div
+        ref={track}
+        className={
+          stacked
+            ? "flex flex-col gap-14 px-[var(--gutter)] pb-24 pt-2"
+            : "flex h-[100svh] items-center gap-[6vw] px-[var(--gutter)] will-change-transform"
+        }
+        style={stacked ? undefined : { width: "max-content" }}
+      >
+        {/* intro plate */}
+        <div
+          className={`flex shrink-0 flex-col justify-end ${stacked ? "w-full" : "h-[70vh] w-[60vw]"}`}
+        >
+          <h2 className="text-h2 font-display leading-[0.9]">
+            Things I&rsquo;ve
+            <br />
+            <span className="font-serif font-normal italic text-[var(--color-acid)]">
+              builzxsazd
+            </span>
+            .
+          </h2>
+          <p className="mt-6 max-w-[34ch] text-body text-[var(--color-bone-dim)]">
+            Selected builds across AI, frontend and real-time products — most
+            recently exploring agents and RAG.
+          </p>
+        </div>
+
+        {PROJECTS.map((p) => (
+          <Card key={p.index} project={p} stacked={stacked} />
+        ))}
+
+        {/* end plate */}
+        <div
+          className={`flex shrink-0 flex-col justify-center ${stacked ? "w-full py-6" : "h-[70vh] w-[42vw]"}`}
+        >
+          <p className="label mb-4">More on request</p>
+          <a
+            href="#contact"
+            data-cursor="view"
+            data-cursor-label="Say hi"
+            className="text-h3 font-display leading-none transition-colors hover:text-[var(--color-acid)]"
+          >
+            Let&rsquo;s
+            <br />
+            talk →
+          </a>
+        </div>
+      </div>
+
+      {/* scrub progress (horizontal mode only) */}
+      {!stacked && (
+        <div className="absolute inset-x-[var(--gutter)] bottom-8 z-20 hidden h-px bg-[var(--color-bone)]/15 md:block">
+          <div
+            data-work-bar
+            className="h-full w-full origin-left scale-x-0 bg-[var(--color-acid)]"
+          />
+        </div>
+      )}
+    </section>
+  );
+}
+
+function Card({ project, stacked }: { project: Project; stacked: boolean }) {
+  return (
+    <article
+      data-cursor="view"
+      data-cursor-label="View"
+      className={`group relative shrink-0 overflow-hidden rounded-[2px] ${
+        stacked ? "h-[60vh] w-full" : "h-[70vh] w-[clamp(320px,46vw,640px)]"
+      }`}
+      style={{ background: project.surface }}
+    >
+      {/* accent edge that grows on hover */}
+      <span
+        className="absolute left-0 top-0 z-10 h-1 w-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full"
+        style={{ background: project.tint }}
+      />
+
+      <div className="absolute inset-0 flex flex-col justify-between p-8 md:p-10">
+        <div className="flex items-start justify-between font-mono text-label uppercase tracking-[0.16em] text-[var(--color-bone-dim)]">
+          <span style={{ color: project.tint }}>{project.index}</span>
+          <span>{project.year}</span>
+        </div>
+
+        <div data-card-meta>
+          <ProjectIcon
+            kind={project.icon}
+            className="mb-4 h-8 w-8 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1"
+            style={{ color: project.tint }}
+          />
+          <p className="label mb-3">{project.category}</p>
+          <h3 className="font-display text-[clamp(1.6rem,4.2vw,3.75rem)] leading-[0.95] [overflow-wrap:break-word] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
+            {project.title}
+          </h3>
+          <p className="mt-4 max-w-[40ch] text-body leading-snug text-[var(--color-bone-dim)] opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:opacity-0 md:group-hover:opacity-100">
+            {project.blurb}
+          </p>
+          <p
+            className="mt-4 font-mono text-micro uppercase tracking-[0.16em]"
+            style={{ color: project.tint }}
+          >
+            {project.stack}
+          </p>
+        </div>
+      </div>
+
+      {/* hover wash */}
+      <span
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(80% 60% at 50% 100%, ${project.tint}14, transparent 70%)`,
+        }}
+      />
+    </article>
+  );
+}
+
+// one small line-icon per project, matching what it actually does rather than
+// a generic badge — kept in the same thin-stroke language as the rest of the
+// site's iconography (mic/speaker/send in Assistant.tsx).
+function ProjectIcon({
+  kind,
+  className,
+  style,
+}: {
+  kind: IconKind;
+  className?: string;
+  style?: CSSProperties;
+}) {
+  const shared = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.4,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  return (
+    <svg className={className} style={style} {...shared}>
+      {kind === "lens" && (
+        <>
+          <circle cx="10.2" cy="10.2" r="6.7" />
+          <path d="M15.2 15.2 21 21" />
+        </>
+      )}
+      {kind === "voice" && (
+        <>
+          <path d="M3 12h.01" />
+          <path d="M7.5 8.5v7" />
+          <path d="M12 4.5v15" />
+          <path d="M16.5 8.5v7" />
+          <path d="M21 12h.01" />
+        </>
+      )}
+      {kind === "study" && (
+        <path d="M2.5 4.5h6a3.5 3.5 0 0 1 3.5 3.5v13a2.5 2.5 0 0 0-2.5-2.5h-7zM21.5 4.5h-6A3.5 3.5 0 0 0 12 8v13a2.5 2.5 0 0 1 2.5-2.5h7z" />
+      )}
+      {kind === "collab" && (
+        <>
+          {/* two cursor arrows, clearly offset — reads as "live, multiple
+              collaborators" rather than a single pointer */}
+          <path
+            d="M3 3l7.07 16.97 2.51-7.39L21 12 3 3z"
+            transform="translate(-2,-2) scale(0.55)"
+            fill="currentColor"
+            stroke="#0f0e0c"
+            strokeWidth={1}
+            opacity={0.4}
+          />
+          <path
+            d="M3 3l7.07 16.97 2.51-7.39L21 12 3 3z"
+            transform="translate(7,7) scale(0.55)"
+            fill="currentColor"
+            stroke="#0f0e0c"
+            strokeWidth={1}
+          />
+        </>
+      )}
+    </svg>
+  );
+}
