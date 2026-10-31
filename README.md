@@ -1,67 +1,55 @@
-# Andrew Aghoghovwia — Portfolio
+# Yash Chalke — Personal Portfolio
 
-**Live:** [andrew-aghoghovwia.vercel.app](https://andrew-aghoghovwia.vercel.app)
+A creative developer portfolio showcasing my work, technical skills, and approach to building modern digital experiences.
 
-![Hero section — WebGL gravity blob behind the Andrew Aghoghovwia wordmark](.github/screenshot.png)
+Designed around the concept of **gravity, weight, and interaction**, this portfolio combines immersive visuals, smooth animations, expressive typography, and thoughtful interactions to create a distinctive browsing experience.
 
-An Awwwards-tier personal portfolio for **Andrew Aghoghovwia**, Senior Frontend & AI Engineer. Themed around *gravity / weight / pull* ("interfaces with gravity"). Dark, cinematic, scroll-driven, built for 60fps.
+![Portfolio Preview](.github/screenshot.png)
 
-**Sections:** Hero (WebGL) → Manifesto → Work (DevLens · RAG CV · AI Study Companion · LiveBoard) → Stack (Frontend · AI · Platform · Testing) → About (portrait + experience timeline + stat counters) → Marquee → Contact.
+## Overview
 
-## Signature moments
+This portfolio represents my journey as a developer, my interest in modern frontend engineering, and my passion for creating interfaces that are not only visually engaging but also performant and intuitive.
 
-- **WebGL hero** — a high-detail icosahedron displaced by custom GLSL simplex noise, warping and pulling toward the cursor like it has its own gravity, wrapped in a fresnel rim glow and an additive particle field. Lazy-loaded and skipped under `prefers-reduced-motion` / touch.
-- **Horizontal featured-work** — a pinned section that translates a card track sideways with scrub inertia (Lenis + GSAP ScrollTrigger), with a live progress bar.
-- **Choreographed preloader** — counter races 0→100 while the wordmark assembles, then the panel lifts to reveal a settled hero.
-- **Custom magnetic cursor** — a difference-blended dot + trailing ring that expands and labels itself over interactive elements; buttons/links have a magnetic pull.
-- **Scroll-reveal typography** — masked word-by-word headline reveals and a manifesto that brightens word-by-word on scroll.
+### What's Inside
 
-## Stack
+- **Hero Experience** — An interactive WebGL scene with custom shaders, particle effects, and cursor-responsive movement.
+- **Selected Work** — A showcase of projects, experiments, and development work.
+- **Manifesto** — A visual expression of my design and development philosophy.
+- **Capabilities** — An overview of my technical skills and areas of expertise.
+- **About** — A little about me, my experience, and my journey as a developer.
+- **Contact** — A space to connect and collaborate.
 
-| Concern | Choice |
-| --- | --- |
-| Framework | React 19 + TypeScript |
-| Build | Vite 6 |
-| Styling | Tailwind CSS v4 (`@theme` tokens, fluid `clamp()` type scale) |
-| 3D | three.js + @react-three/fiber 9 (raw GLSL, no drei) |
-| Animation | GSAP 3 + ScrollTrigger |
-| Smooth scroll | Lenis (driven by GSAP's ticker so both share one rAF) |
+## Design & Interaction
 
-## Design system
+- Dark cinematic aesthetic with a warm neutral palette and electric-lime accents.
+- Expressive typography combining Syne, Manrope, Instrument Serif, and Space Mono.
+- Custom WebGL visuals powered by GLSL shaders.
+- Scroll-driven animations and horizontal project navigation.
+- Magnetic interactions, custom cursor effects, and animated transitions.
+- Responsive layouts with reduced-motion accessibility support.
 
-- **Palette:** warm near-black `#0a0908`, bone `#ece8df`, electric-lime accent `#ccff00` (deliberately not the cliché space blue/purple).
-- **Type:** Syne (display) · Manrope (body) · Instrument Serif (italic accents) · Space Mono (labels) — serif/sans/mono tension.
-- **Fluid scale:** every size is a `clamp()` token in `src/index.css` (`--text-micro` → `--text-mega`).
-- **Custom easing only:** expo / quart cubic-beziers — no `ease`/`linear`.
+## Technology
 
-## Performance
+| Category         | Technologies                |
+| ---------------- | --------------------------- |
+| Frontend         | React 19, TypeScript        |
+| Build Tool       | Vite                        |
+| Styling          | Tailwind CSS v4             |
+| 3D Graphics      | Three.js, React Three Fiber |
+| Animation        | GSAP, ScrollTrigger         |
+| Smooth Scrolling | Lenis                       |
+| Visual Effects   | GLSL, WebGL                 |
 
-- Three.js, GSAP and fiber are split into separate chunks; the WebGL scene is a lazy `import()` (only ~88 kB gzip JS on first paint).
-- Animations stick to `transform` / `opacity`; DPR is capped; geometry detail and particle count drop under reduced motion.
-- Fonts preconnected + preloaded; grain is a pure-CSS SVG turbulence overlay.
-- Full support for `prefers-reduced-motion` (native scroll, static hero glow, paused grain) and coarse pointers (native cursor, vertical work list).
+## Inspiration & Special Thanks
 
-## Run
+A special thanks to **Andrew Aghoghovwia** for the inspiration behind this project.
 
-```bash
-npm install
-npm run dev        # http://localhost:5173
-npm run build      # typecheck + production bundle → dist/
-npm run preview    # serve the build
-```
+I genuinely appreciate his creative vision, thoughtful design decisions, and the work he has shared with the developer community. His portfolio inspired me to explore a different creative direction and build an experience of my own.
 
-## Structure
+I'm also grateful for his permission to use and learn from his original work and materials. This project has been customized and further developed for my personal portfolio, with sincere appreciation for the creativity and effort behind the original.
 
-```
-src/
-  components/
-    hero/        Hero, GravScene (R3F canvas), blobShaders (GLSL)
-    sections/    Manifesto, Work, Capabilities, Approach, Marquee, Footer
-    ui/          Magnetic, Reveal / SplitReveal
-    Cursor, Grain, Preloader, Nav
-  lib/
-    smoothScroll Lenis + ScrollTrigger bootstrap
-    useGSAP      context-scoped GSAP-in-React hook
-    hooks        pointer / reduced-motion / coarse-pointer helpers
-  index.css      design tokens, fluid type, grain, cursor states
-```
+**Thank you, Andrew, for the inspiration, generosity, and encouragement to create.**
+
+---
+
+Designed and customized with appreciation by **Yash Chalke**.
