@@ -4,8 +4,6 @@ A creative developer portfolio showcasing my work, technical skills, and approac
 
 Designed around the concept of **gravity, weight, and interaction**, this portfolio combines immersive visuals, smooth animations, expressive typography, and thoughtful interactions to create a distinctive browsing experience.
 
-![Portfolio Preview](.github/screenshot.png)
-
 ## Overview
 
 This portfolio represents my journey as a developer, my interest in modern frontend engineering, and my passion for creating interfaces that are not only visually engaging but also performant and intuitive.
