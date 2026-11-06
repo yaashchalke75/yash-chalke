@@ -31,7 +31,7 @@ function Clock() {
 
 export default function Nav() {
   return (
-    <header className="fixed inset-x-0 top-0 z-[9000] flex items-center justify-between px-[var(--gutter)] py-5 mix-blend-difference">
+    <header className="fixed inset-x-0 top-0 z-[9500] flex items-center justify-between px-[var(--gutter)] py-5 mix-blend-difference">
       <Magnetic strength={0.5}>
         <a
           href="#top"

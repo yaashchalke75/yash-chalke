@@ -38,16 +38,10 @@ This portfolio represents my journey as a developer, my interest in modern front
 | Smooth Scrolling | Lenis                       |
 | Visual Effects   | GLSL, WebGL                 |
 
-## Inspiration & Special Thanks
+## Credits & Author
 
-A special thanks to **Andrew Aghoghovwia** for the inspiration behind this project.
+Designed, customized, and built by **Yash Chalke**.
 
-I genuinely appreciate his creative vision, thoughtful design decisions, and the work he has shared with the developer community. His portfolio inspired me to explore a different creative direction and build an experience of my own.
-
-I'm also grateful for his permission to use and learn from his original work and materials. This project has been customized and further developed for my personal portfolio, with sincere appreciation for the creativity and effort behind the original.
-
-**Thank you, Andrew, for the inspiration, generosity, and encouragement to create.**
-
----
-
-Designed and customized with appreciation by **Yash Chalke**.
+- **Email**: [chalkeyash11@gmail.com](mailto:chalkeyash11@gmail.com)
+- **LinkedIn**: [linkedin.com/in/yashchalke75](https://www.linkedin.com/in/yashchalke75)
+- **Instagram**: [@yaaashhh___](https://www.instagram.com/yaaashhh___/)

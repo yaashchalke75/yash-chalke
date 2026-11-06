@@ -260,6 +260,7 @@
     border-color 0.4s var(--ease-expo),
     opacity 0.3s ease;
   will-change: transform, width, height;
+  mix-blend-mode: difference;
 }
 /* generic hover: an outline ring that grows AROUND the element so the text
    underneath stays fully visible (no solid fill covering it) */
@@ -267,7 +268,8 @@
   width: 3rem;
   height: 3rem;
   background-color: transparent;
-  border-color: var(--color-acid);
+  border-color: #ffffff;
+  mix-blend-mode: difference;
 }
 /* image cards etc. carry a label ("View") and no text to hide — keep the
    bold solid fill here. Placed after so it overrides the outline state. */
@@ -276,6 +278,7 @@
   height: 6.5rem;
   background-color: var(--color-acid);
   border-color: transparent;
+  mix-blend-mode: normal;
 }
 /* press-shrink is handled in JS (inside the transform) so it scales around
    the cursor, not the element's top-left origin */

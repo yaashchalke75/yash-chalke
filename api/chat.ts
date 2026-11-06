@@ -1,11 +1,6 @@
 // Vercel Edge Function — RAG-over-CV assistant powered by Groq (OpenAI-compatible API).
-// The CV is small enough that context-stuffing beats a vector DB: the whole
-// profile is the grounding context, and the model is told to answer only from
-// it. Streams plain text back to the client.
-//
-// Switched from Google Gemini because Google zeroed out the free tier for
-// UK/EEA/Switzerland accounts (quota `limit: 0` on every model, permanent,
-// not something a new key fixes). Groq's free tier has no such restriction.
+// The whole profile is the grounding context, and the model is told to answer only from it.
+// Streams plain text back to the client.
 
 export const config = { runtime: "edge" };
 
@@ -16,79 +11,52 @@ const MODELS = [
   "openai/gpt-oss-20b",
 ];
 
-// --- Andrew's grounding profile (the "knowledge base") -----------------------
+// --- Yash's grounding profile (the "knowledge base") -----------------------
 const PROFILE = `
-ANDREW AGHOGHOVWIA — Senior Frontend & AI Engineer
-Location: Carshalton, London, United Kingdom. Status: open to senior frontend and agentic-AI roles.
-Contact: email androyt1@gmail.com · phone +44 7821 460751 · LinkedIn linkedin.com/in/andrew-aghoghovwia.
+YASH CHALKE — Frontend Developer & Full Stack Engineer
+Location: Pune, India. Status: open to Frontend Developer and Full Stack engineering roles.
+Contact: email chalkeyash11@gmail.com · phone +91 8956509311 · LinkedIn linkedin.com/in/yashchalke75 · Instagram instagram.com/yaaashhh___.
 
 SUMMARY
-Senior engineer with 8+ years shipping production web products across React/TypeScript frontend
-engineering and Python-based AI systems. Builds polished interfaces, FastAPI services, RAG workflows,
-LangGraph agents, and LLM-powered product experiences that are fast, accessible, and ready to ship.
+Frontend Developer building scalable web and mobile applications with React.js, Angular, TypeScript and Next.js on the frontend, and Node.js, Express, MongoDB and PostgreSQL on the backend. Focused on clean UI architecture, reusable component design, smooth animations, RESTful API integrations and production-ready user experiences.
 
 EXPERIENCE
-1) Frontend & AI Engineer — Contract / R&D (Remote), 2023–Present.
-   - Production RAG pipelines with Python, OpenAI APIs, Gemini Vision, Pinecone and Weaviate for
-     context-aware AI responses.
-   - Agentic workflows with LangGraph: self-grading RAG, multi-hop retrieval, human-in-the-loop
-     agents, and conversational RAG with memory.
-   - User-facing AI in Next.js and React — turning model output into clear UIs with loading states,
-     citations and error handling.
-   - LangSmith tracing + evaluation with RAGAS and openevals (faithfulness, context relevance,
-     answer correctness).
-   - Scalable dashboards and modular UI libraries with Next.js App Router, edge/serverless functions,
-     shadcn/ui and Storybook; sub-100ms response targets.
-2) Senior Frontend Developer — HSBC, Leeds, UK, 2022–2023.
-   - Onboarding and ETL-tracking interfaces in React, TypeScript and the internal Masala Design System.
-   - Improved performance ~40% via code splitting, lazy loading and component-level memoization.
-   - Refined AWS CodePipeline and Jenkins flows with DevOps, cutting deployment time ~30%.
-   - Mentored junior developers; raised code quality and accessibility.
-3) Lead Frontend Developer — E-commerce (Contract), 2021–2022.
-   - Delivered 10+ high-performance e-commerce platforms with Next.js, TypeScript, Tailwind and Shopify APIs.
-   - Custom admin dashboards with D3.js and Chart.js; GTM, GA4 and Pixel; automated SEO audits.
-4) Full Stack Web Developer — Kobu Innovative Solutions, Warri, Nigeria, 2016–2020.
-   - Led a frontend rewrite from legacy code to React and Vue (~30% better load/UX).
-   - WebSockets for real-time chat, live notifications and dynamic updates.
-   - Full-stack e-commerce with Stripe, PayPal and mobile payment gateways.
+1) Frontend Developer — PortalWiz Technologies, Sep 2026 — Present.
+   - Working extensively with Angular and TypeScript on the EcoMed platform.
+   - Building modular UI components, implementing robust state management, and optimizing frontend performance.
+   - Collaborating closely with cross-functional teams to deliver enterprise-grade business ecosystem solutions.
+2) Frontend Developer — MyVyay, Jan 2026 — Jul 2026.
+   - Engineered scalable full-stack web and mobile features using the MERN stack (MongoDB, Express, React, Node.js).
+   - Developed key frontend modules and APIs for Zeux LifeSciences (pharmaceutical e-commerce platform for Mexico).
+   - Contributed to the MyVyay 3.0 Mobile App development with React Native and modern frontend tooling.
 
 SKILLS
-Frontend: React, TypeScript, Next.js (App Router), Vue.js, Tailwind CSS, SCSS, shadcn/ui, Radix UI,
-Material UI, Storybook, Redux Toolkit, Zustand, TanStack Query.
-AI: Python, LangChain, LangGraph, LangSmith, RAG pipelines, agentic workflows, multi-hop RAG,
-human-in-the-loop, OpenAI API, Gemini Vision, Pinecone, Weaviate, FAISS, RAGAS, openevals.
-Platform: AWS (Lambda, S3, CodePipeline), Docker, Jenkins, GitHub Actions, Vercel, Railway, FastAPI,
-Node.js, REST APIs, WebSockets.
-Testing: Jest, Vitest, Cypress, Playwright.
+Frontend: React.js, Angular, TypeScript, Next.js, React Native, JavaScript (ES6+), Tailwind CSS, HTML5, CSS3, Responsive Design.
+Backend & Databases: Node.js, Express.js, MongoDB, PostgreSQL, MERN Stack, REST APIs, JSON.
+Platform & Tools: Git, GitHub, CI/CD, Vercel, Postman, npm, Vite.
 
 FEATURED PROJECTS
-- DevLens — AI GitHub repo analyser (React, TypeScript, Claude API): auto-generates codebase
-  summaries, stack breakdowns, code-quality reports and README drafts.
-- RAG CV Assistant (Voice) — (Python, FastAPI, LangChain, LangGraph, Pinecone, LangSmith): ingests
-  resume data and answers recruiter questions with traced, cited responses. (This very chat is a
-  lightweight version of that project.)
-- AI Study Companion — (Next.js, OpenAI, RAG, Gemini Vision): upload documents and query them in
-  natural language, including multimodal PDF analysis.
-- Real-Time Collaboration Board — (React, WebSockets, Supabase, TypeScript): live cursors, threaded
-  comments and Markdown autosave.
+- Zeux LifeSciences: Scalable pharmaceutical e-commerce platform for Mexico built with MERN stack, featuring catalog exploration, prescription validation, and secure checkout.
+- OpsFlow DevOps Suite: Centralized DevOps and cloud telemetry dashboard for monitoring deployment pipelines and automated workflows (MERN stack).
+- MediCare Health & Appointments: End-to-end digital healthcare portal enabling real-time doctor appointment bookings, patient record management, and consultation scheduling (MERN stack).
+- EcoMed Solutions: Enterprise application built with Angular and TypeScript to orchestrate and streamline healthcare business ecosystems and supply chain operations.
 
-EDUCATION & CERTIFICATIONS
-B.Sc. Library & Information Science, Delta State University, Nigeria.
-Code Warrior White Belt (React Security) — XSS and SQL-injection prevention.
+EDUCATION
+BSc in Information Technology, University of Mumbai.
 `;
 
-const SYSTEM = `You are the AI assistant on Andrew Aghoghovwia's portfolio website. You answer questions
-from recruiters and hiring managers about Andrew, grounded ONLY in the PROFILE below.
+const SYSTEM = `You are the AI assistant on Yash Chalke's portfolio website. You answer questions
+from recruiters and hiring managers about Yash, grounded ONLY in the PROFILE below.
 
 Rules:
 - Answer ONLY from the PROFILE. Never invent facts, employers, dates, or skills.
 - If something isn't in the PROFILE, say you don't have that detail and suggest emailing
-  androyt1@gmail.com or connecting on LinkedIn.
+  chalkeyash11@gmail.com or connecting on LinkedIn.
 - Be concise and natural — 1 to 4 short sentences. Answers may be read aloud, so avoid markdown,
   bullet symbols, links and code blocks; write plain conversational sentences.
-- Refer to him as "Andrew". Be warm, professional and confident, not salesy.
-- For availability/hiring questions, note he's open to senior frontend and agentic-AI roles and
-  point to email or LinkedIn to take it further.
+- Refer to him as "Yash". Be warm, professional and confident.
+- For availability/hiring questions, note he's actively open to Frontend Developer and Full Stack roles
+  and point to chalkeyash11@gmail.com or LinkedIn to connect.
 
 PROFILE:
 ${PROFILE}`;
@@ -103,7 +71,7 @@ export default async function handler(req: Request): Promise<Response> {
   const key = process.env.GROQ_API_KEY;
   if (!key) {
     return new Response(
-      "The assistant isn't configured yet. Please reach Andrew at androyt1@gmail.com.",
+      "The assistant isn't configured yet. Please reach Yash at chalkeyash11@gmail.com.",
       { status: 503 },
     );
   }
@@ -154,7 +122,7 @@ export default async function handler(req: Request): Promise<Response> {
   if (!upstream || !upstream.body) {
     console.error("[chat] all models failed, last error:", lastErr);
     return new Response(
-      "The assistant is briefly unavailable. Please try again in a moment, or email androyt1@gmail.com.",
+      "The assistant is briefly unavailable. Please try again in a moment, or email chalkeyash11@gmail.com.",
       { status: 502 },
     );
   }

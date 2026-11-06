@@ -77,12 +77,12 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
       <div data-pre-content className="flex flex-1 flex-col justify-between">
         <div className="flex justify-between pt-4">
           <span className="label">Loading portfolio</span>
-          <span className="label">A. Aghoghovwia</span>
+          <span className="label">Y.Chalke</span>
         </div>
 
         <div className="flex items-end justify-between">
-          <h2 className="font-display text-display leading-[0.8]" aria-label="Andrew Aghoghovwia">
-            {"ANDREW".split("").map((c, i) => (
+          <h2 className="font-display text-display leading-[0.8]" aria-label="Yash Chalke">
+            {"YASH".split("").map((c, i) => (
               <span key={i} className="line-mask align-bottom" style={{ display: "inline-block" }}>
                 <span data-pre-char style={{ display: "inline-block" }}>
                   {c}

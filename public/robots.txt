@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://andrew-aghoghovwia.vercel.app/sitemap.xml
+Sitemap: https://yash-chalke.vercel.app/sitemap.xml

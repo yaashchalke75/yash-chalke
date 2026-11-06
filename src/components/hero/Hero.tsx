@@ -109,9 +109,9 @@ export default function Hero() {
         className="relative z-10 flex items-start justify-between"
       >
         <p className="label max-w-[18ch] leading-relaxed">
-          Junior Frontend
+          Frontend
           <br />
-          &amp; AI Engineer
+          Developer
         </p>
         <p className="label hidden text-right md:block">
           Pune, IND
@@ -139,8 +139,7 @@ export default function Hero() {
         />
         <h1 className="font-display text-mega leading-[0.82]">
           <span className="sr-only">
-            Andrew Aghoghovwia — Senior Frontend &amp; AI Engineer based in the
-            UK
+            Yash Chalke — Frontend Developer based in India
           </span>
           <span data-hero-line className="line-mask" aria-hidden="true">
             <span className="inline-block will-change-transform">YASH</span>

@@ -8,37 +8,41 @@ import { Reveal } from "../ui/Reveal";
 const portraitJpg = "/portrait.jpg";
 const portraitWebp = "/portrait.webp";
 
+// Dynamically compute years in production based on career start date (Jan 2026)
+const getYearsInProduction = () => {
+  const startDate = new Date(2026, 0, 1);
+  const now = new Date();
+  const months =
+    (now.getFullYear() - startDate.getFullYear()) * 12 +
+    (now.getMonth() - startDate.getMonth());
+  return Math.max(1, Math.floor(months / 12) || 1);
+};
+
+const yearsInProduction = getYearsInProduction();
+
 const STATS = [
-  { value: 8, suffix: "+", label: "Years in production" },
+  {
+    value: yearsInProduction,
+    suffix: "+",
+    label: yearsInProduction === 1 ? "Year in production" : "Years in production",
+  },
   { value: 40, suffix: "%", label: "Avg performance lift" },
-  { value: 10, suffix: "+", label: "Platforms shipped" },
+  { value: 3, suffix: "+", label: "Platforms shipped" },
   { value: 100, suffix: "ms", label: "Response-time target" },
 ];
 
 const TIMELINE = [
   {
-    range: "2023 — Now",
-    role: "Frontend & AI Engineer",
-    org: "Contract / R&D · Remote",
-    note: "RAG pipelines, LangGraph agents and user-facing AI in Next.js & React.",
+    range: "Sep 2026 — Present",
+    role: "Frontend Developer",
+    org: "PortalWiz Technologies",
+    note: "Angular development on the EcoMed project, building modular UI components, state management and scalable frontend architecture.",
   },
   {
-    range: "2022 — 2023",
-    role: "Senior Frontend Developer",
-    org: "HSBC · Leeds, UK",
-    note: "Onboarding & ETL interfaces in React/TS; +40% performance, −30% deploys.",
-  },
-  {
-    range: "2021 — 2022",
-    role: "Lead Frontend Developer",
-    org: "E-commerce · Contract",
-    note: "10+ high-performance Next.js + Shopify platforms and analytics dashboards.",
-  },
-  {
-    range: "2016 — 2020",
-    role: "Full Stack Developer",
-    org: "Kobu Innovative Solutions · Warri",
-    note: "React/Vue rewrites, real-time WebSocket features and payment integrations.",
+    range: "Jan 2026 — Jul 2026",
+    role: "Frontend Developer",
+    org: "MyVyay",
+    note: "MERN stack engineering across Zeux LifeSciences and the MyVyay 3.0 Mobile App, delivering responsive UIs and API integrations.",
   },
 ];
 
@@ -92,7 +96,7 @@ export default function About() {
             >
               {/* monogram fallback (shows if the portrait is missing) */}
               <span className="absolute inset-0 flex items-center justify-center font-display text-mega leading-none text-[var(--color-bone)]/10">
-                AA
+                YC
               </span>
 
               {imgOk && (
@@ -100,7 +104,7 @@ export default function About() {
                   <source srcSet={portraitWebp} type="image/webp" />
                   <img
                     src={portraitJpg}
-                    alt="Andrew Aghoghovwia"
+                    alt="Yash Chalke"
                     width={880}
                     height={1100}
                     loading="lazy"
@@ -116,8 +120,8 @@ export default function About() {
               <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(10,9,8,0.7),transparent_55%)]" />
 
               <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between p-5 font-mono text-micro uppercase tracking-[0.16em] text-[var(--color-bone)]">
-                <span>Andrew Aghoghovwia</span>
-                <span className="text-[var(--color-acid)]">UK</span>
+                <span>Yash Chalke</span>
+                <span className="text-[var(--color-acid)]">IND</span>
               </figcaption>
             </figure>
           </div>
@@ -128,10 +132,7 @@ export default function About() {
           <SplitHeading />
 
           <Reveal as="p" className="mt-8 max-w-[52ch] text-lead font-light leading-[1.45] text-[var(--color-bone-dim)]">
-            Senior engineer with 8+ years shipping production web products — React and TypeScript on
-            the surface, Python AI systems underneath. Right now I&rsquo;m building agentic LLM
-            workflows, RAG pipelines and LLM-powered product experiences that are fast, accessible
-            and ready to ship.
+            Frontend Developer building scalable web and mobile applications — React.js, TypeScript and Angular on the frontend, Node.js and MongoDB underneath. Focused on clean UI architecture, reusable components, API integrations and production-ready user experiences.
           </Reveal>
 
           {/* experience timeline */}
@@ -156,8 +157,7 @@ export default function About() {
           </ul>
 
           <p className="mt-8 max-w-[52ch] text-body text-[var(--color-ash)]">
-            B.Sc. Library &amp; Information Science, Delta State University · Code Warrior White Belt
-            (React Security).
+            BSc In Information Technology, University of Mumbai
           </p>
         </div>
       </div>
@@ -166,7 +166,7 @@ export default function About() {
       <div className="mt-24 grid grid-cols-2 gap-px border edge bg-[var(--color-bone)]/[0.06] md:mt-32 md:grid-cols-4">
         {STATS.map((s) => (
           <div key={s.label} className="bg-[var(--color-coal)] p-7 md:p-9">
-            <p className="font-display text-h2 leading-none text-[var(--color-bone)]">
+            <p className="font-display text-[clamp(2.4rem,4.5vw,5rem)] leading-none text-[var(--color-bone)]">
               <Counter value={s.value} suffix={s.suffix} />
             </p>
             <p className="label mt-4">{s.label}</p>
@@ -179,8 +179,8 @@ export default function About() {
 
 function SplitHeading() {
   return (
-    <h2 className="text-h2 font-display leading-[0.92]">
-      Engineer
+    <h2 className="font-display text-[clamp(2.2rem,3.8vw,4.75rem)] leading-[0.92]">
+      Developer
       <br />
       <span className="font-serif font-normal italic text-[var(--color-acid)]">who ships</span>.
     </h2>

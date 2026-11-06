@@ -11,8 +11,8 @@ const LINKS: [string, string][] = [
 ];
 
 const SOCIAL: [string, string][] = [
-  ["LinkedIn", "https://www.linkedin.com/in/andrew-aghoghovwia"],
-  ["Portfolio", "https://portfolio-next-coral-alpha.vercel.app"],
+  ["LinkedIn", "https://www.linkedin.com/in/yashchalke75"],
+              ["Instagram", "https://www.instagram.com/yaaashhh___/"],
 ];
 
 /**
@@ -97,28 +97,30 @@ export default function MobileMenu() {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
-        className="relative z-[9001] h-5 w-7 md:hidden"
+        className="relative z-[9501] flex h-9 w-9 items-center justify-center p-1 md:hidden"
       >
-        <span
-          className="absolute left-0 block h-[2px] w-full bg-current transition-all duration-500 ease-[cubic-bezier(0.87,0,0.13,1)]"
-          style={{
-            top: open ? "50%" : "20%",
-            transform: open ? "translateY(-50%) rotate(45deg)" : "none",
-          }}
-        />
-        <span
-          className="absolute left-0 block h-[2px] w-full bg-current transition-all duration-500 ease-[cubic-bezier(0.87,0,0.13,1)]"
-          style={{
-            top: open ? "50%" : "80%",
-            transform: open ? "translateY(-50%) rotate(-45deg)" : "none",
-          }}
-        />
+        <span className="relative block h-4 w-6">
+          <span
+            className="absolute left-0 block h-[2px] w-full bg-current transition-all duration-500 ease-[cubic-bezier(0.87,0,0.13,1)]"
+            style={{
+              top: open ? "50%" : "15%",
+              transform: open ? "translateY(-50%) rotate(45deg)" : "none",
+            }}
+          />
+          <span
+            className="absolute left-0 block h-[2px] w-full bg-current transition-all duration-500 ease-[cubic-bezier(0.87,0,0.13,1)]"
+            style={{
+              top: open ? "50%" : "85%",
+              transform: open ? "translateY(-50%) rotate(-45deg)" : "none",
+            }}
+          />
+        </span>
       </button>
 
       {createPortal(
         <div
           ref={overlay}
-          className="fixed inset-0 z-[8000] flex flex-col justify-between overflow-hidden bg-[var(--color-void)] px-[var(--gutter)] pb-10 pt-28 md:hidden"
+          className="fixed inset-0 z-[9200] flex flex-col justify-between overflow-hidden bg-[var(--color-void)] px-[var(--gutter)] pb-10 pt-28 md:hidden"
           style={{ visibility: "hidden" }}
         >
           <nav className="mt-4 flex flex-col">
@@ -148,17 +150,17 @@ export default function MobileMenu() {
             <div data-mm-fade>
               <p className="label mb-2">Get in touch</p>
               <a
-                href="mailto:androyt1@gmail.com"
-                className="font-display text-h3 font-bold text-[var(--color-acid)]"
+                href="mailto:chalkeyash11@gmail.com"
+                className="block max-w-full font-display text-[clamp(1.15rem,5.2vw,1.85rem)] font-bold tracking-tight text-[var(--color-acid)] transition-colors hover:text-[var(--color-bone)]"
               >
-                androyt1@gmail.com
+                chalkeyash11@gmail.com
               </a>
             </div>
             <div
               data-mm-fade
               className="flex flex-wrap gap-x-6 gap-y-1 font-mono text-label text-[var(--color-bone-dim)]"
             >
-              <span>Carshalton, UK</span>
+              <span>Pune, IND</span>
               <span className="text-[var(--color-acid)]">● Open to work</span>
             </div>
             <div data-mm-fade className="flex gap-5 font-mono text-label text-[var(--color-bone-dim)]">

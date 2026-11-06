@@ -52,7 +52,16 @@ export default function Marquee() {
     };
   }, []);
 
-  const WORDS = ["REACT", "TYPESCRIPT", "NEXT.JS", "PYTHON", "LANGGRAPH", "RAG", "FASTAPI"];
+  const WORDS = [
+    "REACT.JS",
+    "REACT NATIVE",
+    "NEXT.JS",
+    "TYPESCRIPT",
+    "ANGULAR",
+    "NODE.JS",
+    "MONGODB",
+    "POSTGRESQL",
+  ];
 
   return (
     <section

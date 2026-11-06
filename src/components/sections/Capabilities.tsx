@@ -5,22 +5,17 @@ const CAPS = [
   {
     n: "01",
     title: "Frontend Engineering",
-    tags: "React · TypeScript · Next.js · Tailwind · shadcn/ui",
+    tags: "React · Angular · TypeScript · Next.js · Tailwind",
   },
   {
     n: "02",
-    title: "AI Engineering",
-    tags: "Python · LangChain · LangGraph · RAG · OpenAI · Pinecone",
+    title: "Backend Engineering",
+    tags: "Node.js · Express · MongoDB · PostgreSQL",
   },
   {
     n: "03",
     title: "Platform & Delivery",
-    tags: "AWS · Docker · FastAPI · Vercel · CI/CD",
-  },
-  {
-    n: "04",
-    title: "Testing & Quality",
-    tags: "Jest · Vitest · Cypress · Playwright",
+    tags: "GitHub · CI/CD · Vercel",
   },
 ];
 
@@ -45,7 +40,7 @@ export default function Capabilities() {
             className="text-h2 font-display leading-[0.95]"
           />
           <p className="mt-8 max-w-[46ch] text-lead font-light text-[var(--color-bone-dim)] md:ml-auto md:text-right">
-            Four layers, one goal — turning model output and data into interfaces that feel{" "}
+            Three layers, one goal — turning code and data into interfaces that feel{" "}
             <span className="font-serif italic text-[var(--color-bone)]">effortless</span>.
           </p>
         </div>
@@ -64,7 +59,7 @@ export default function Capabilities() {
                 className="relative flex w-full flex-col overflow-hidden py-7 text-left md:flex-row md:items-center md:justify-between md:gap-6 md:py-9"
               >
                 {/* accent sweep on hover */}
-                <span className="absolute inset-0 -z-0 origin-left scale-x-0 bg-[var(--color-acid)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
+                <span className="pointer-events-none absolute inset-0 -z-0 origin-left scale-x-0 bg-[var(--color-acid)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
 
                 <span className="relative z-10 flex items-center justify-between gap-5 md:justify-start md:gap-10">
                   <span className="flex items-baseline gap-5 md:gap-10">

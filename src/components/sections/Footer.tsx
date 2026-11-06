@@ -25,19 +25,19 @@ export default function Footer() {
           <div className="mt-12 flex flex-wrap items-center gap-6">
             <Magnetic strength={0.4}>
               <a
-                href="mailto:androyt1@gmail.com"
+                href="mailto:chalkeyash11@gmail.com"
                 data-cursor="hover"
-                className="group inline-flex items-center gap-4 rounded-full bg-[var(--color-acid)] px-8 py-5 font-display text-lg font-bold text-[var(--color-void)] transition-[gap] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:gap-6"
+                className="group inline-flex max-w-full items-center gap-3 rounded-full bg-[var(--color-acid)] px-6 py-4 font-display text-base font-bold text-[var(--color-void)] transition-[gap] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:gap-6 sm:gap-4 sm:px-8 sm:py-5 sm:text-lg"
               >
-                androyt1@gmail.com
-                <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-45">
+                <span className="truncate">chalkeyash11@gmail.com</span>
+                <span className="shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-45">
                   ↗
                 </span>
               </a>
             </Magnetic>
             <p className="max-w-[28ch] text-body text-[var(--color-bone-dim)]">
-              <span className="text-[var(--color-acid)]">●</span> Open to senior frontend &amp; AI
-              engineering roles.
+              <span className="text-[var(--color-acid)]">●</span> Open to Frontend &amp; Full
+              Stack developer roles.
             </p>
           </div>
         </div>
@@ -48,10 +48,10 @@ export default function Footer() {
         <div>
           <p className="label mb-4">Contact</p>
           <p className="text-body text-[var(--color-bone-dim)]">
-            Carshalton, UK
+            Pune, IND
             <br />
-            <a href="tel:+447821460751" data-cursor="hover" className="transition-colors hover:text-[var(--color-acid)]">
-              +44 7821 460751
+            <a href="tel:+918956509311" data-cursor="hover" className="transition-colors hover:text-[var(--color-acid)]">
+              +91 8956509311
             </a>
           </p>
         </div>
@@ -59,9 +59,9 @@ export default function Footer() {
           <p className="label mb-4">Elsewhere</p>
           <ul className="space-y-1 text-body text-[var(--color-bone-dim)]">
             {[
-              ["LinkedIn", "https://www.linkedin.com/in/andrew-aghoghovwia"],
-              ["Portfolio", "https://portfolio-next-coral-alpha.vercel.app"],
-              ["Email", "mailto:androyt1@gmail.com"],
+              ["LinkedIn", "https://www.linkedin.com/in/yashchalke75"],
+              ["Instagram", "https://www.instagram.com/yaaashhh___/"],
+              ["Email", "mailto:chalkeyash11@gmail.com"],
             ].map(([l, h]) => (
               <li key={l}>
                 <a
@@ -96,7 +96,7 @@ export default function Footer() {
         <div className="md:text-right">
           <p className="label mb-4">Now</p>
           <p className="text-body text-[var(--color-bone-dim)]">
-            Building agentic LLM workflows &amp; RAG pipelines — and open to what&rsquo;s next.
+            Building scalable web &amp; mobile apps with React, Angular, TypeScript &amp; Node.js — and open to what&rsquo;s next.
           </p>
         </div>
       </div>
@@ -104,14 +104,14 @@ export default function Footer() {
       {/* giant wordmark */}
       <div className="pointer-events-none mt-12 select-none">
         <h2 className="text-center font-display text-mega font-extrabold leading-[0.9] tracking-tight text-[var(--color-bone)]">
-          ANDREW<span className="text-[var(--color-acid)]">°</span>
+          YASH<span className="text-[var(--color-acid)]">°</span>
         </h2>
       </div>
 
       <div className="flex flex-col items-center justify-between gap-2 border-t edge pt-6 font-mono text-micro uppercase tracking-[0.16em] text-[var(--color-ash)] md:flex-row">
-        <span>© {year} Andrew Aghoghovwia</span>
-        <span>Senior Frontend &amp; AI Engineer</span>
-        <span>Carshalton, UK</span>
+        <span>© {year} Yash Chalke</span>
+        <span>Frontend Developer</span>
+        <span>Pune, IND</span>
       </div>
     </footer>
   );

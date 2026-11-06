@@ -4,14 +4,14 @@ import { getLenis } from "../lib/smoothScroll";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const SUGGESTIONS = [
-  "What's Andrew's experience with RAG and agents?",
-  "What's his frontend stack?",
-  "Is he available for work?",
-  "Tell me about his time at HSBC.",
+  "What is Yash's tech stack?",
+  "Tell me about his work at PortalWiz & MyVyay.",
+  "What projects has Yash built?",
+  "Is he available for frontend developer roles?",
 ];
 
 const GREETING =
-  "Hi — I'm Andrew's AI assistant, a small RAG model grounded in his CV. Ask me about his experience, stack, projects or availability.";
+  "Hi — I'm Yash's AI assistant, grounded in his CV and portfolio. Ask me about his experience, stack, projects or availability.";
 
 // Opera and Firefox don't ship the Web Speech Recognition API, so the mic can't
 // transcribe there — let the user know rather than leaving a dead button.
@@ -157,7 +157,7 @@ export default function Assistant() {
         const fallback = await res.text().catch(() => "");
         const msg =
           fallback ||
-          "Sorry — I couldn't reach the assistant. Please email androyt1@gmail.com.";
+          "Sorry — I couldn't reach the assistant. Please email chalkeyash11@gmail.com.";
         setMessages((m) => withLastAssistant(m, msg));
         setBusy(false);
         return;
@@ -177,7 +177,7 @@ export default function Assistant() {
       setMessages((m) =>
         withLastAssistant(
           m,
-          "Sorry — something went wrong. Please email androyt1@gmail.com.",
+          "Sorry — something went wrong. Please email chalkeyash11@gmail.com.",
         ),
       );
     } finally {
@@ -206,7 +206,7 @@ export default function Assistant() {
       (window as unknown as { webkitSpeechRecognition?: new () => SR }).webkitSpeechRecognition;
     if (!Ctor) return;
     const r = new Ctor();
-    r.lang = "en-GB";
+    r.lang = "en-IN";
     r.interimResults = true;
     r.continuous = false;
     let finalText = "";
@@ -243,7 +243,7 @@ export default function Assistant() {
         <button
           onClick={() => setOpen(true)}
           data-cursor="hover"
-          aria-label="Ask my AI — Andrew's AI assistant"
+          aria-label="Ask my AI — Yash's AI assistant"
           className="fixed bottom-5 right-5 z-[9100] flex items-center gap-2.5 rounded-full border border-[var(--color-bone)]/15 bg-[var(--color-coal)]/90 px-4 py-3 font-mono text-label uppercase tracking-[0.14em] text-[var(--color-bone)] backdrop-blur-md transition-colors hover:border-[var(--color-acid)]/60"
         >
           <span className="relative flex h-2.5 w-2.5">
@@ -263,9 +263,9 @@ export default function Assistant() {
         <div className="flex items-center justify-between gap-3 border-b border-[var(--color-bone)]/10 px-5 py-4">
           <div className="min-w-0">
             <p className="font-display text-base font-bold leading-none text-[var(--color-bone)]">
-              Andrew&rsquo;s AI<span className="text-[var(--color-acid)]">.</span>
+              Yash&rsquo;s AI<span className="text-[var(--color-acid)]">.</span>
             </p>
-            <p className="label mt-1 truncate normal-case tracking-normal">Grounded in his CV</p>
+            <p className="label mt-1 truncate normal-case tracking-normal">Grounded in CV &amp; portfolio</p>
           </div>
           <div className="flex shrink-0 items-center gap-4 text-[var(--color-bone-dim)]">
             <button
@@ -387,7 +387,7 @@ export default function Assistant() {
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={listening ? "Listening…" : "Ask about Andrew…"}
+            placeholder={listening ? "Listening…" : "Ask about Yash…"}
             className="min-w-0 flex-1 bg-transparent px-1 text-body text-[var(--color-bone)] placeholder:text-[var(--color-ash)] focus:outline-none"
           />
           <button

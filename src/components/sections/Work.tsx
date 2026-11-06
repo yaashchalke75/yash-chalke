@@ -7,7 +7,7 @@ import {
   usePrefersReducedMotion,
 } from "../../lib/hooks";
 
-type IconKind = "lens" | "voice" | "study" | "collab";
+type IconKind = "pharma" | "devops" | "health" | "eco" | "lens" | "voice" | "study" | "collab";
 
 type Project = {
   index: string;
@@ -24,55 +24,55 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     index: "01",
-    title: "DEVLENS",
-    category: "AI GitHub Repo Analyser",
-    stack: "React · TypeScript · Claude API",
+    title: "Zeux LifeSciences",
+    category: "E-Com Pharma Mexico",
+    stack: "MongoDB · Express · React · Node.js",
     blurb:
-      "Analyses public repositories and auto-generates codebase summaries, stack breakdowns, code-quality reports and README drafts.",
+      "Full-stack pharmaceutical e-commerce platform delivering certified medical supplies across Mexico, featuring live catalog search and secure checkout.",
     year: "2026",
     tint: "#ece8df",
     surface:
       "radial-gradient(120% 90% at 20% 15%, #232220 0%, #0e0d0c 55%), linear-gradient(135deg, #171614, #0a0908)",
-    icon: "lens",
+    icon: "pharma",
   },
   {
     index: "02",
-    title: "RAG CV",
-    category: "Voice RAG Assistant",
-    stack: "Python · FastAPI · LangGraph · Pinecone",
+    title: "OpsFlow DevOps Suite",
+    category: "DevOps & Cloud Automation",
+    stack: "MongoDB · Express · React · Node.js",
     blurb:
-      "Production RAG pipeline that ingests resume data into Pinecone and answers recruiter questions out loud — voice queries in, traced and cited responses back.",
+      "Centralized DevOps management suite providing real-time pipeline monitoring, container orchestration telemetry, and automated deployment workflows.",
     year: "2026",
     tint: "#c7c2b8",
     surface:
       "radial-gradient(110% 80% at 80% 10%, #1e1d1a 0%, #0c0b0a 60%), linear-gradient(135deg, #15140f, #0a0908)",
-    icon: "voice",
+    icon: "devops",
   },
   {
     index: "03",
-    title: "STUDY AI",
-    category: "AI Study Companion",
-    stack: "Next.js · OpenAI · Gemini Vision",
+    title: "MediCare Health & Appointments",
+    category: "Healthcare & Patient Management",
+    stack: "MongoDB · Express · React · Node.js",
     blurb:
-      "Context-aware assistant that lets users upload documents and query them in natural language, with multimodal PDF analysis.",
+      "End-to-end healthcare portal enabling real-time doctor appointment bookings, patient record tracking, and virtual consultation scheduling.",
     year: "2026",
     tint: "#a7a299",
     surface:
       "radial-gradient(120% 90% at 70% 30%, #201f1c 0%, #0d0c0b 60%), linear-gradient(135deg, #161512, #0a0908)",
-    icon: "study",
+    icon: "health",
   },
   {
     index: "04",
-    title: "LIVE BOARD",
-    category: "Real-Time Collaboration",
-    stack: "React · WebSockets · Supabase",
+    title: "EcoMed Solutions",
+    category: "Business Ecosystem Management",
+    stack: "Angular",
     blurb:
-      "Collaborative workspace with live cursors, threaded comments and Markdown autosave — Google Docs-style interactions.",
+      "Enterprise management application designed to orchestrate healthcare business ecosystems, supply chain logistics, and multi-vendor operations.",
     year: "2026",
     tint: "#837e75",
     surface:
       "radial-gradient(120% 90% at 30% 80%, #1b1a17 0%, #0c0b0a 60%), linear-gradient(135deg, #141310, #0a0908)",
-    icon: "collab",
+    icon: "eco",
   },
 ];
 
@@ -131,48 +131,54 @@ export default function Work() {
       ref={section}
       className="relative overflow-hidden bg-[var(--color-ink)]"
     >
-      {/* header — in flow on mobile, overlays the pinned track on desktop */}
-      <div className="pointer-events-none z-20 flex items-start justify-between px-[var(--gutter)] pt-28 pb-2 md:absolute md:inset-x-0 md:top-0 md:pb-0 md:pt-28">
-        <p className="label">
-          <span className="text-[var(--color-acid)]">[02]</span>
-          <br />
-          Selected work
-        </p>
-        {!stacked && (
-          <p className="label hidden text-right md:block">
+      {/* scroll hint — visible on desktop horizontal mode */}
+      {!stacked && (
+        <div className="pointer-events-none absolute right-[var(--gutter)] top-0 z-20 hidden pt-28 md:block">
+          <p className="label text-right">
             Drag · Scroll
             <br />
             {PROJECTS.length} projects
           </p>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* track — horizontal (pinned) on desktop, vertical stack otherwise */}
       <div
         ref={track}
         className={
           stacked
-            ? "flex flex-col gap-14 px-[var(--gutter)] pb-24 pt-2"
+            ? "flex flex-col gap-14 px-[var(--gutter)] pb-24 pt-28"
             : "flex h-[100svh] items-center gap-[6vw] px-[var(--gutter)] will-change-transform"
         }
         style={stacked ? undefined : { width: "max-content" }}
       >
         {/* intro plate */}
         <div
-          className={`flex shrink-0 flex-col justify-end ${stacked ? "w-full" : "h-[70vh] w-[60vw]"}`}
+          className={`flex shrink-0 flex-col justify-center ${
+            stacked ? "w-full" : "h-[70vh] w-[clamp(540px,64vw,980px)]"
+          }`}
         >
-          <h2 className="text-h2 font-display leading-[0.9]">
-            Things I&rsquo;ve
-            <br />
-            <span className="font-serif font-normal italic text-[var(--color-acid)]">
-              builzxsazd
-            </span>
-            .
-          </h2>
-          <p className="mt-6 max-w-[34ch] text-body text-[var(--color-bone-dim)]">
-            Selected builds across AI, frontend and real-time products — most
-            recently exploring agents and RAG.
-          </p>
+          <div className="grid grid-cols-12 items-start gap-y-8 md:gap-x-8">
+            <p className="label col-span-12 md:col-span-3">
+              <span className="text-[var(--color-acid)]">[02]</span>
+              <br />
+              Selected work
+            </p>
+
+            <div className="col-span-12 md:col-span-9">
+              <h2 className="text-h2 font-display leading-[0.9]">
+                Things I&rsquo;ve
+                <br />
+                <span className="font-serif font-normal italic text-[var(--color-acid)]">
+                  built
+                </span>
+                .
+              </h2>
+              <p className="mt-6 max-w-[34ch] text-body text-[var(--color-bone-dim)]">
+                Selected builds across MERN stack and Angular — web platforms and mobile apps crafted for production.
+              </p>
+            </div>
+          </div>
         </div>
 
         {PROJECTS.map((p) => (
@@ -287,6 +293,30 @@ function ProjectIcon({
   };
   return (
     <svg className={className} style={style} {...shared}>
+      {kind === "pharma" && (
+        <>
+          <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" />
+          <path d="m8.5 8.5 7 7" />
+        </>
+      )}
+      {kind === "devops" && (
+        <>
+          <circle cx="6" cy="6" r="3" />
+          <circle cx="6" cy="18" r="3" />
+          <circle cx="18" cy="12" r="3" />
+          <line x1="6" y1="9" x2="6" y2="15" />
+          <path d="M6 9a9 9 0 0 1 9 3" />
+        </>
+      )}
+      {kind === "health" && (
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+      )}
+      {kind === "eco" && (
+        <>
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+        </>
+      )}
       {kind === "lens" && (
         <>
           <circle cx="10.2" cy="10.2" r="6.7" />

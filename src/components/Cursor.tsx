@@ -101,12 +101,12 @@ export default function Cursor() {
     <div aria-hidden className="pointer-events-none fixed inset-0 z-[9999]">
       <div
         ref={dotRef}
-        className="fixed left-0 top-0 h-1.5 w-1.5 rounded-full bg-[var(--color-acid)] mix-blend-difference"
+        className="fixed left-0 top-0 h-2 w-2 rounded-full bg-white mix-blend-difference"
       />
       <div
         ref={ringRef}
         data-active="false"
-        className="cursor-ring fixed left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-bone)]/40"
+        className="cursor-ring fixed left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full border border-white/50 mix-blend-difference"
       >
         <span ref={labelRef} className="font-mono text-[10px] uppercase tracking-wide text-[var(--color-void)]" />
       </div>
