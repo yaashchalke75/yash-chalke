@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yash-chalke.vercel.app/sitemap.xml
+Sitemap: https://yaash-chalke.vercel.app/sitemap.xml
