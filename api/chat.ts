@@ -4,6 +4,8 @@
 
 export const config = { runtime: "edge" };
 
+declare const process: { env: Record<string, string | undefined> };
+
 // Tried in order; first one that succeeds is used.
 const MODELS = [
   "llama-3.3-70b-versatile",
